@@ -6,6 +6,18 @@ My Claude Code setup for hackathons, game jams and demo days. The `hackathon-bui
 
 Claude is the orchestrator and owns the spec, the walking skeleton, the merges, the demo tags and the submission. Agents build slices in parallel worktrees; I and the team make the decisions.
 
+```mermaid
+flowchart TD
+    F[Facts: rules, judging, APIs] --> G[One grilling round, SPEC.md]
+    G --> K[Walking skeleton, deployed, tag demo-0]
+    K --> W[Fan out slices in worktrees]
+    W --> M[Merge each slice: verify.sh READY, ff-only to main, tag demo-N]
+    M -->|demo script incomplete| W
+    M -->|70%: feature freeze| H[Harden: three clean runs, fallbacks, one review]
+    H --> SU[Submit by 90%: README, video, fields]
+    SU --> P[Rehearse and pitch]
+```
+
 The clock is planned backwards from the deadline:
 
 | By | Done |
